@@ -152,3 +152,53 @@
 // app.listen(3000, () => {
 // 	console.log("3000번 포트로 서버를 실행했습니다.")
 // })
+
+// const express = require('express')
+// const responseTime = require('response-time')
+
+// const app = express()
+
+// app.use(responseTime((req, res, time) => {
+
+//     console.log(`${req.method} ${req.url} ${time}`)
+// }))
+
+// app.get('/', function(req,res){
+//     res.send('hello, world!')
+// })
+
+// app.listen(8080)
+
+const express = require('express')
+const timeout = require('connect-timeout');
+const { application } = require('express');
+
+const app = express()
+
+// app.post('/save', timeout('5s'), express.json(), haltOnTimeout, function(req,res,next){
+//     savePost(req.body, function (err, id){
+//         if(err) return next(err)
+//         if(req.timedout) return
+//         res.send('saved as id' + id)
+//     })
+// })
+
+// function haltOnTimeout (req, res, next){
+//     if(!req.timedout) next()
+// }
+
+// function savePost(post, cb){
+//     setTimeout(function (){
+//         cb(null, ((Math.random() * 40000) >>> 0))
+//     }, (Math.random() * 7000) >>> 0)
+// }
+
+app.get('/', function(req,res){
+    console.log('hello world!');
+})
+
+app.get('/about', function(req,res){
+    res.send('about')
+})
+
+app.listen(3000)
